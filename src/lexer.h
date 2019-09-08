@@ -49,7 +49,7 @@ class Lexer {
 	      while (isdigit(lastChar = getNextChar(iFile))) {
 		cachedNumStr += lastChar;
 	      }
-	      setnumVal(strtod(cachedNumStr));
+	      setnumVal(std::stoi(cachedNumStr));
 	      return tok_number;
 	    }
 
