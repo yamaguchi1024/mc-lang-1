@@ -22,7 +22,7 @@
  - Done!
 
 ## 1.4
- - check `parser.h`
+ - check `lexer.h`
  - edit file
  - make
  - ./mc test/test2.mc
@@ -32,4 +32,7 @@
  - diff ./test/test2_my_output.txt ./test/test2_expected_output.txt
  - seems to be OK?
  - Done!
+
+## 1.5
+ - check 'parser.h'
  
