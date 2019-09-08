@@ -1,0 +1,10 @@
+`--> ./mc test/test5.mc                
+
+define i64 @__anon_expr() {
+entry:
+  ret i64 2
+
+entry1:                                           ; No predecessors!
+  ret i64 -52
+}
+Wrote output.o
