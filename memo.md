@@ -14,3 +14,9 @@
 
 ## 1.3
  - check `lexer.h`
+ - edit file
+ - make
+ - ./mc test/test1.mc
+ - diff ./test/test1_my_output.txt ./test/test1_expected_output.txt
+ - seems to be OK?
+ - Done!
