@@ -61,6 +61,12 @@ class Lexer {
             // 4. lastCharがEOFでない場合、行末まで読み込んだので次のトークンに進むためにgettok()をreturnする。
             //
             // ここに実装して下さい
+	    if (lastChar == '#') {
+	      while (lastChar = getNextChar(iFile) != '\n' | lastChar != EOF);
+	      if (lastChar != EOF)
+		// recursive code for getting nextline('\n')
+		return gettok();
+	    }
 
             // EOFならtok_eofを返す
             if (iFile.eof())
