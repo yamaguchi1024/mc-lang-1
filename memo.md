@@ -20,3 +20,6 @@
  - diff ./test/test1_my_output.txt ./test/test1_expected_output.txt
  - seems to be OK?
  - Done!
+
+## 1.4
+ - check `parser.h`
