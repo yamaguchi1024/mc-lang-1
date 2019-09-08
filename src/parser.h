@@ -128,8 +128,17 @@ static std::unique_ptr<ExprAST> ParseParenExpr() {
     // 　 CurTokが')'かどうかチェックします。もし')'でなければ、LogErrorを用いてエラーを出して下さい。
     // 4. getNextToken()を呼んでトークンを一つ進め、2で呼んだParseExpressionの返り値を返します。
     //
-    // 課題を解く時はこの行を消してここに実装して下さい。
+
+  getNextToken();
+  auto parsedToken = ParseExpression();
+  if (parsedToken == nullptr) {
     return nullptr;
+  }
+  if (CurTok != ')') {
+    return LogError("Expected ')'");
+  }
+  getNextToken();
+  return parsedToken;
 }
 
 // ParsePrimary - NumberASTか括弧をパースする関数
