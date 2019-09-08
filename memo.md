@@ -43,3 +43,8 @@
 
 ## 1.6
  - check 'parser.h'
+ - ./mc test/test4.mc
+ - diff ./test/test4_my_output.txt ./test/test4_expected_output.txt
+ - seems to be OK?
+ - Done!
+

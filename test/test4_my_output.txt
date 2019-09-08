@@ -1,0 +1,14 @@
+define i64 @__anon_expr() {
+entry:
+  ret i64 2
+
+entry1:                                           ; No predecessors!
+  ret i64 5
+
+entry2:                                           ; No predecessors!
+  ret i64 20
+
+entry3:                                           ; No predecessors!
+  ret i64 10028
+}
+Wrote output.o
