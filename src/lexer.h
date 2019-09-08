@@ -62,7 +62,9 @@ class Lexer {
             //
             // ここに実装して下さい
 	    if (lastChar == '#') {
-	      while (lastChar = getNextChar(iFile) != '\n' | lastChar != EOF);
+	      lastChar = getNextChar(iFile);
+	      while (lastChar != '\n' && lastChar != EOF)
+		lastChar = getNextChar(iFile);
 	      if (lastChar != EOF)
 		// recursive code for getting nextline('\n')
 		return gettok();
