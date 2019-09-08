@@ -48,3 +48,9 @@
  - seems to be OK?
  - Done!
 
+## 1.7
+ - check 'codegen.h'
+ - ./mc test/test5.mc
+ - diff ./test/test5_my_output.txt ./test/test5_expected_output.txt
+ - seems to be OK?
+ - Done!
