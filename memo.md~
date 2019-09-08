@@ -1,9 +1,0 @@
-# mc-lang-1
-## 1.1
- - Maybe later
-
-## 1.2
- - clone this repository
- - install clang++7
- - update Makefile
-   - Check the commit
