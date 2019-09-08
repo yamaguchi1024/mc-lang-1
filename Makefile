@@ -5,3 +5,5 @@ CXXFLAGS = `llvm-config --cxxflags --ldflags --system-libs --libs all`
 
 mc: src/mc.cpp
 	$(CXX) $(CXXFLAGS) src/mc.cpp -o mc
+clean:
+	rm mc output.o
