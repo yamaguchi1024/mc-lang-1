@@ -41,6 +41,18 @@ class Lexer {
             //
             // ここに実装して下さい
 
+	    // implement parse of digits
+	    if (isdigit(lastChar)) {
+	      std::string cachedNumStr = "";
+	      cachedNumStr += lastChar;
+	      // read next Char from file
+	      while (isdigit(lastChar = getNextChar(iFile))) {
+		cachedNumStr += lastChar;
+	      }
+	      setnumVal(std::stoi(cachedNumStr));
+	      return tok_number;
+	    }
+
             // TODO 1.4: コメントアウトを実装してみよう
             // '#'を読んだら、その行の末尾まで無視をするコメントアウトを実装する。
             // 1. 今の文字(LastChar)が'#'かどうかをチェック

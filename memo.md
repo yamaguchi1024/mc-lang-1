@@ -11,3 +11,6 @@
    - Check the commit(58d10ae [UPDATE] Makefile)
  - make
    - Done!
+
+## 1.3
+ - check `lexer.h`
