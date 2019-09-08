@@ -35,4 +35,9 @@
 
 ## 1.5
  - check 'parser.h'
- 
+ - edit file
+ - ./mc test/test3.mc
+ - diff ./test/test3_my_output.txt ./test/test3_expected_output.txt
+ - seems to be OK?
+ - Done!
+
