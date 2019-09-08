@@ -159,34 +159,39 @@ static std::unique_ptr<ExprAST> ParsePrimary() {
 // 状態で返ります。
 static std::unique_ptr<ExprAST> ParseBinOpRHS(int CallerPrec,
         std::unique_ptr<ExprAST> LHS) {
-    // 課題を解く時はこの行を消して下さい。
-    return LHS;
-    while (true) {
-        // 1. 現在の二項演算子の結合度を取得する。 e.g. int tokprec = GetTokPrecedence();
+  while (true) {
+    // 1. 現在の二項演算子の結合度を取得する。 e.g. int tokprec = GetTokPrecedence();
+    int tokprec = GetTokPrecedence();
+      
+    // 2. もし呼び出し元の演算子(CallerPrec)よりも結合度が低ければ、ここでは演算をせずにLHSを返す。
+    // 例えば、「4*2+3」ではここで'2'が返るはずで、「4+2*3」ではここでは返らずに処理が進み、
+    // '2*3'がパースされた後に返る。
+    if (tokprec < CallerPrec)
+      return LHS;
+      
+    // 3. 二項演算子をセットする。e.g. int BinOp = CurTok;
+    int BinOp = CurTok;
+      
+    // 4. 次のトークン(二項演算子の右のexpression)に進む。
+    getNextToken();
 
-        // 2. もし呼び出し元の演算子(CallerPrec)よりも結合度が低ければ、ここでは演算をせずにLHSを返す。
-        // 例えば、「4*2+3」ではここで'2'が返るはずで、「4+2*3」ではここでは返らずに処理が進み、
-        // '2*3'がパースされた後に返る。
+    // 5. 二項演算子の右のexpressionをパースする。 e.g. auto RHS = ParsePrimary();
+    auto RHS = ParsePrimary();
 
-        // 3. 二項演算子をセットする。e.g. int BinOp = CurTok;
-
-        // 4. 次のトークン(二項演算子の右のexpression)に進む。
-
-        // 5. 二項演算子の右のexpressionをパースする。 e.g. auto RHS = ParsePrimary();
-
-        // GetTokPrecedence()を呼んで、もし次のトークンも二項演算子だった場合を考える。
-        // もし次の二項演算子の結合度が今の演算子の結合度よりも強かった場合、ParseBinOpRHSを再帰的に
-        // 呼んで先に次の二項演算子をパースする。
-        //int NextPrec = GetTokPrecedence();
-        //if (tokprec < NextPrec) {
-        //    RHS = ParseBinOpRHS(tokprec + 1, std::move(RHS));
-        //    if (!RHS)
-        //        return nullptr;
-        //}
-
-        // LHS, RHSをBinaryASTにしてLHSに代入する。
-        //LHS = llvm::make_unique<BinaryAST>(BinOp, std::move(LHS), std::move(RHS));
+    // GetTokPrecedence()を呼んで、もし次のトークンも二項演算子だった場合を考える。
+    // もし次の二項演算子の結合度が今の演算子の結合度よりも強かった場合、ParseBinOpRHSを再帰的に
+    // 呼んで先に次の二項演算子をパースする。
+    int NextPrec = GetTokPrecedence();
+    if (tokprec < NextPrec) {
+      RHS = ParseBinOpRHS(tokprec + 1, std::move(RHS));
+      if (!RHS)
+	return nullptr;
     }
+
+    // LHS, RHSをBinaryASTにしてLHSに代入する。
+    LHS = llvm::make_unique<BinaryAST>(BinOp, std::move(LHS), std::move(RHS));
+  }
+  return LHS;
 }
 
 // ExprASTは1. 数値リテラル 2. '('から始まる演算 3. 二項演算子の三通りが考えられる為、
