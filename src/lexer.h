@@ -70,7 +70,7 @@ class Lexer {
         std::ifstream iFile;
         uint64_t numVal;
         static char getNextChar(std::ifstream &is) {
-            char c;
+            char c = '\0';
             if (is.good())
                 is.get(c);
 
