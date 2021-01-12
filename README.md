@@ -49,4 +49,11 @@ makeをすると、`mc`という実行可能ファイルが出来ます。これ
 この課題まで解き終わると、`test/test5.mc`が正常にコンパイル出来るようになるはずです。
 
 
-課題は以上になります。お疲れ様でした！！
+課題は以上になります。お疲れ様でした！！  
+  
+### Continuous build status  
+  
+Build Type | Status  
+:-: | :-:  
+**Ubuntu 18.04 LTS Debug x64** | [![Ubuntu 18.04 LTS Debug x64](https://github.com/YuqiaoZhang/mc-lang-1/workflows/Ubuntu%2018.04%20LTS%20Debug%20x64/badge.svg)](https://github.com/YuqiaoZhang/mc-lang-1/actions?query=workflow%3A%22Ubuntu+18.04+LTS+Debug+x64%22)  
+  

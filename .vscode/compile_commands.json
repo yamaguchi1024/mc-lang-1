@@ -1,0 +1,7 @@
+[
+    {
+        "directory": "${workspaceFolder}/src",
+        "command": "clang++ $(llvm-config --cxxflags --ldflags --system-libs --libs all) ${workspaceFolder}/src/mc.cpp -o ${workspaceFolder}/mc.o",
+        "file": "${workspaceFolder}/src/mc.cpp"
+    }
+]
